@@ -1,5 +1,6 @@
 import React from "react";
-import ButtonsGroup from "../../components/ButtonsGroup";
+import PropTypes from "prop-types";
+import ButtonsGroup from "components/ButtonsGroup";
 
 const Buttons = ({ onClick }) => {
   const row = [
@@ -122,6 +123,10 @@ const Buttons = ({ onClick }) => {
       <ButtonsGroup buttons={row5} />
     </>
   );
+};
+
+Buttons.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Buttons;

@@ -1,11 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
+import PropTypes from "prop-types";
 
-export default ({ value }) => (
+const CalculationDisplay = ({ value }) => (
   <View style={styles.container}>
     <Text style={styles.text}>{value}</Text>
   </View>
 );
+
+CalculationDisplay.propTypes = {
+  value: PropTypes.string.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -20,3 +25,5 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
+
+export default CalculationDisplay;

@@ -1,8 +1,9 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import Button from "../Button";
+import { StyleSheet, View } from "react-native";
+import PropTypes from "prop-types";
+import Button from "components/Button";
 
-export default ({ buttons }) => (
+const ButtonsGroup = ({ buttons }) => (
   <View style={styles.container}>
     {buttons.map((e) => (
       <View style={styles.item} key={e.label}>
@@ -11,6 +12,16 @@ export default ({ buttons }) => (
     ))}
   </View>
 );
+
+ButtonsGroup.propTypes = {
+  buttons: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      variant: PropTypes.string.isRequired,
+      onClick: PropTypes.func.isRequired,
+    })
+  ),
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -24,3 +35,5 @@ const styles = StyleSheet.create({
     margin: 5,
   },
 });
+
+export default ButtonsGroup;

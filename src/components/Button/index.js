@@ -9,9 +9,9 @@ const Button = ({ label, variant, onClick }) => (
 );
 
 Button.propTypes = {
-  label: PropTypes.string,
-  variant: PropTypes.string,
-  onClick: PropTypes.func,
+  label: PropTypes.string.isRequired,
+  variant: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
