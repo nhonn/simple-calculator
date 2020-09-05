@@ -8,12 +8,14 @@ const Main = () => {
   const [calculation, setCalculation] = React.useState("");
   const [result, setResult] = React.useState("0");
   const [ans, setAns] = React.useState("0");
+  const [isNew, setNew] = React.useState(true);
 
   const handleClick = (btn) => {
-    const res = calc(btn, calculation, result, ans);
+    const res = calc(btn, calculation, result, ans, isNew);
     setCalculation(res.calcString);
     setResult(res.resString);
     setAns(res.ansString);
+    setNew(res.isNewInput);
   };
 
   return (
