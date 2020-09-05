@@ -1,4 +1,9 @@
 import React from "react";
-import Main from "_pages/main";
+import { StyleSheet, SafeAreaView, Text } from "react-native";
+import Main from "./src/screens/Main";
 
-export default () => <Main />;
+export default () => (
+  <SafeAreaView style={{ flex: 1, justifyContent: "center" }}>
+    <Main></Main>
+  </SafeAreaView>
+);

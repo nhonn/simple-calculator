@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#000",
-    fontWeight: "700",
-    fontSize: "1.2rem",
+    fontWeight: "600",
+    fontSize: 15,
   },
   normal: {
     backgroundColor: "white",
@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
     backgroundColor: "orange",
   },
   func: {
-    backgroundColor: "green",
+    backgroundColor: "yellow",
   },
   equal: {
-    backgroundColor: "turquoise",
+    backgroundColor: "#34558b",
   },
 });
 
