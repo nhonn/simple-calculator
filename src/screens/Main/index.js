@@ -2,12 +2,19 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Buttons from "./Buttons";
 import Displays from "./Displays";
+import calc from "./calc";
 
 const Main = () => {
-  const [calculation, setCalculation] = React.useState("0");
+  const [calculation, setCalculation] = React.useState("");
   const [result, setResult] = React.useState("0");
+  const [ans, setAns] = React.useState("0");
 
-  const handleClick = (id) => alert(id);
+  const handleClick = (btn) => {
+    const res = calc(btn, calculation, result, ans);
+    setCalculation(res.calcString);
+    setResult(res.resString);
+    setAns(res.ansString);
+  };
 
   return (
     <View style={styles.container}>
