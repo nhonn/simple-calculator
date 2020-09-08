@@ -2,28 +2,36 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Buttons from "./Buttons";
 import Displays from "./Displays";
-import calc from "./calc";
 import { ThemeContext } from "contexts/themeContext";
+import { DataContext } from "contexts/dataContext";
 
 const Main = () => {
-  const [calculation, setCalculation] = React.useState("");
-  const [result, setResult] = React.useState("0");
-  const [ans, setAns] = React.useState("0");
-  const [isNew, setNew] = React.useState(true);
   const { theme } = React.useContext(ThemeContext);
+  const { state, dispatch } = React.useContext(DataContext);
 
   const handleClick = (btn) => {
-    const res = calc(btn, calculation, result, ans, isNew);
-    setCalculation(res.calcString);
-    setResult(res.resString);
-    setAns(res.ansString);
-    setNew(res.isNewInput);
+    switch (btn.type) {
+      case "num":
+        dispatch({ type: "NUMBER", payload: btn.value });
+        break;
+      case "operator":
+        dispatch({ type: "OPERATOR", payload: btn.value });
+        break;
+      case "func":
+        if (btn.value === "del") dispatch({ type: "DEL" });
+        if (btn.value === "ans") dispatch({ type: "ANS" });
+        if (btn.value === "clear") dispatch({ type: "CLEAR" });
+        if (btn.value === "=") dispatch({ type: "EQUAL" });
+        break;
+      default:
+        alert("errors");
+    }
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.displays}>
-        <Displays calculation={calculation} result={result} />
+        <Displays calculation={state.calculation} result={state.result} />
       </View>
       <View style={[styles.buttons, { backgroundColor: theme.cover }]}>
         <Buttons onClick={handleClick} />

@@ -10,17 +10,17 @@ const Buttons = ({ onClick }) => {
       onClick: () => onClick({ type: "func", value: "theme" }),
     },
     {
-      label: "ANS",
+      label: "ans",
       variant: "func",
       onClick: () => onClick({ type: "func", value: "ans" }),
     },
     {
-      label: "DEL",
+      label: "del",
       variant: "func",
       onClick: () => onClick({ type: "func", value: "del" }),
     },
     {
-      label: "CLR",
+      label: "clear",
       variant: "func",
       onClick: () => onClick({ type: "func", value: "clear" }),
     },
