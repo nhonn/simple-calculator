@@ -3,12 +3,14 @@ import { StyleSheet, View } from "react-native";
 import Buttons from "./Buttons";
 import Displays from "./Displays";
 import calc from "./calc";
+import { ThemeContext } from "contexts/themeContext";
 
 const Main = () => {
   const [calculation, setCalculation] = React.useState("");
   const [result, setResult] = React.useState("0");
   const [ans, setAns] = React.useState("0");
   const [isNew, setNew] = React.useState(true);
+  const { theme } = React.useContext(ThemeContext);
 
   const handleClick = (btn) => {
     const res = calc(btn, calculation, result, ans, isNew);
@@ -23,7 +25,7 @@ const Main = () => {
       <View style={styles.displays}>
         <Displays calculation={calculation} result={result} />
       </View>
-      <View style={styles.buttons}>
+      <View style={[styles.buttons, { backgroundColor: theme.cover }]}>
         <Buttons onClick={handleClick} />
       </View>
     </View>
@@ -38,7 +40,6 @@ const styles = StyleSheet.create({
     height: "30%",
   },
   buttons: {
-    backgroundColor: "turquoise",
     height: "70%",
     padding: 10,
   },

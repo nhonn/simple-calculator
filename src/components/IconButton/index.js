@@ -1,24 +1,28 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import PropTypes from "prop-types";
-import { ThemeContext } from "../../contexts/themeContext";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { ThemeContext } from "contexts/themeContext";
 
-const Button = ({ label, variant, onClick }) => (
+const IconButton = ({ label, onClick }) => (
   <ThemeContext.Consumer>
-    {({ theme }) => (
+    {({ theme, toggleTheme }) => (
       <TouchableOpacity
-        onPress={onClick}
-        style={[styles.button, { backgroundColor: theme[variant] }]}
+        onPress={label == "THEME" ? toggleTheme : onClick}
+        style={styles.button}
       >
-        <Text style={[styles.text, { color: theme.foreground }]}>{label}</Text>
+        <MaterialCommunityIcons
+          name="theme-light-dark"
+          size={24}
+          color={theme.foreground}
+        />
       </TouchableOpacity>
     )}
   </ThemeContext.Consumer>
 );
 
-Button.propTypes = {
+IconButton.propTypes = {
   label: PropTypes.string.isRequired,
-  variant: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
@@ -30,10 +34,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
   },
-  text: {
-    fontSize: 20,
-    fontWeight: "600",
-  },
 });
 
-export default Button;
+export default IconButton;

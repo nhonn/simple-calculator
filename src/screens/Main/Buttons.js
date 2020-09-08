@@ -20,7 +20,7 @@ const Buttons = ({ onClick }) => {
       onClick: () => onClick({ type: "func", value: "del" }),
     },
     {
-      label: "CLEAR",
+      label: "CLR",
       variant: "func",
       onClick: () => onClick({ type: "func", value: "clear" }),
     },

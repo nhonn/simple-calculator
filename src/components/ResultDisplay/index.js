@@ -1,11 +1,16 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
+import { ThemeContext } from "contexts/themeContext";
 
 const ResultDisplay = ({ value }) => (
-  <View style={styles.container}>
-    <Text style={styles.text}>{value}</Text>
-  </View>
+  <ThemeContext.Consumer>
+    {({ theme }) => (
+      <View style={[styles.container, { backgroundColor: theme.background }]}>
+        <Text style={[styles.text, { color: theme.foreground }]}>{value}</Text>
+      </View>
+    )}
+  </ThemeContext.Consumer>
 );
 
 ResultDisplay.propTypes = {
@@ -20,9 +25,8 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   text: {
-    color: "black",
     fontSize: 24,
-    fontWeight: "800",
+    fontWeight: "900",
   },
 });
 
