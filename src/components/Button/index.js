@@ -1,11 +1,19 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import PropTypes from "prop-types";
+import { ThemeContext } from "../../contexts/themeContext";
 
 const Button = ({ label, variant, onClick }) => (
-  <TouchableOpacity onPress={onClick} style={[styles.button, styles[variant]]}>
-    <Text style={styles.text}>{label}</Text>
-  </TouchableOpacity>
+  <ThemeContext.Consumer>
+    {(theme) => (
+      <TouchableOpacity
+        onPress={onClick}
+        style={[styles.button, styles[variant]]}
+      >
+        <Text style={{ color: theme.foreground }}>{label}</Text>
+      </TouchableOpacity>
+    )}
+  </ThemeContext.Consumer>
 );
 
 Button.propTypes = {
@@ -21,11 +29,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     borderRadius: 5,
-  },
-  text: {
-    color: "#000",
-    fontWeight: "600",
-    fontSize: 15,
   },
   normal: {
     backgroundColor: "white",

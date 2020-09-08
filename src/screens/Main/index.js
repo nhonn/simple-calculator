@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   displays: {
-    backgroundColor: "pink",
     height: "30%",
   },
   buttons: {
